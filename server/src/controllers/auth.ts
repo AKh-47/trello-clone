@@ -1,70 +1,89 @@
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
-
+import { Request, Response, NextFunction } from "express";
 import User from "../models/User";
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+require("dotenv").config();
 
-export const userSignUp = async (
-  _: undefined,
-  { username, email, password }: any
+export const registerHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
 ) => {
   try {
-    const exisitngUser = await User.findOne({ username });
-
-    if (exisitngUser) {
-      return {
-        message: "Username is already in use",
-        success: false,
-      };
+    if (!process.env.SECRET) {
+      throw new Error("Environment Unavailable");
     }
 
-    const exisitngEmail = await User.findOne({ email });
+    const { name, email, password } = req.body;
 
-    if (exisitngEmail) {
-      return {
-        message: "Email is already in use",
-        success: false,
-      };
+    const exisitngUser = await User.findOne({ email });
+
+    if (exisitngUser) {
+      return res.json({
+        message: "User already Exists",
+      });
     }
 
     const hashedPass = await bcrypt.hash(password, 10);
 
-    await new User({
-      username,
+    let user = new User({
+      name,
       email,
       password: hashedPass,
-    }).save();
+    });
 
-    return {
+    user = await user.save();
+
+    res.status(200).json({
       message: "User Created Succesfully",
-      success: true,
-    };
+    });
   } catch (err) {
-    return {
-      message: "Internal Server Error",
-      success: false,
-    };
+    next(err);
   }
 };
+export const loginHandler = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    if (!process.env.SECRET) {
+      throw new Error("Environment Unavailable");
+    }
 
-export const userLogIn = async (_: undefined, { email, password }: any) => {
-  const user = await User.findOne({ email });
+    const { email, password } = req.body;
 
-  if (!user) {
-    return "User does not exist";
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.json({
+        message: "User does not exist",
+      });
+    }
+
+    const check = await bcrypt.compare(password, user.password);
+
+    if (!check) {
+      return res.status(401).json({
+        message: "Auth Failed",
+      });
+    }
+
+    if (!user.verified) {
+      return res.json({
+        message: "User not Verified",
+      });
+    }
+
+    const token = jwt.sign(
+      { id: user._id, name: user.name, email: user.email },
+      process.env.SECRET
+    );
+
+    res.status(200).send({
+      token,
+    });
+  } catch (err) {
+    next(err);
   }
-
-  const check = await bcrypt.compare(password, user.password);
-
-  if (!check) {
-    return {
-      message: "Auth Failed",
-      success: false,
-    };
-  }
-
-  if (!process.env.SECRET) {
-    throw new Error("Environment Invalid");
-  }
-
-  const token = jwt.sign({ id: user._id }, process.env.SECRET);
 };

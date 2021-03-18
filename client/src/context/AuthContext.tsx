@@ -7,7 +7,7 @@ interface Props {
 
 interface Value {
   currentUser: Nullable<User>;
-  register: (email: string, password: string) => Promise<void>;
+  register: (name: string, email: string, password: string) => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   logout: () => Promise<void>;
 }
@@ -21,7 +21,7 @@ export function useAuth() {
 export default function AuthProvider({ children }: Props): ReactElement {
   const [currentUser, setCurrentUser] = useState<Nullable<User>>(null);
 
-  const register = async (email: string, password: string) => {};
+  const register = async (name: string, email: string, password: string) => {};
 
   const login = async (email: string, password: string) => {};
 

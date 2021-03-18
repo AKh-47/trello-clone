@@ -1,3 +1,213 @@
 .board{
-    
+    font-family: $font-family, sans-serif, serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 90vh;
+    min-width: 100vw;
+    width: max-content;
+
+    header{
+        height: 10vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input{
+            background-color: inherit;
+            color: $white;
+            font-size: 2.25rem;
+            text-align: center;
+        }
+    }
+
+
+    main{
+        height: 80vh;
+        background-color: $white;
+        border-top-left-radius: 50px;
+        border-top-right-radius: 50px;
+        margin-left: auto;
+        padding: 2rem;
+        width: 100%;
+
+
+        .lists{
+            display: flex;
+        }
+    }
+}
+
+.add-list{
+    color: $white;
+    background-color: $black;
+    width: 17.5rem;
+    padding: .35rem 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    height: 2rem;
+    transition: .4s;
+    overflow: hidden;
+
+    form{
+        padding-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        
+
+        input{
+            padding: .25rem;
+    border-radius: 5px;
+
+        }
+
+        button{
+            padding: .25rem .5rem;
+    border-radius: 5px;
+
+        }
+    }
+
+    p{
+        cursor: pointer;
+    }
+}
+
+#add-list:checked + .add-list{
+    height: 5rem;
+
+}
+
+.list{
+    width: 17.5rem;
+    color: $white;
+    background-color: $black;
+    border-radius: 5px;
+    margin: 0 .5rem;
+
+    .name{
+        color:#fefefe;
+        margin-left: .5rem;
+    }
+
+    &__top{
+        display: flex;
+        align-items: baseline;
+        height: 2.2rem;
+
+
+    input{
+        height: 100%;
+        flex: 1;
+        font-size: 1.35rem;
+        padding: .25rem 0;
+    border-radius: 5px;
+    background-color: inherit;
+    }
+
+    .menu{
+        font-size: 1.25rem;
+        cursor: pointer;
+        padding: 0 .25rem;
+    }
+    }
+
+    &__item{
+display: flex;
+margin: .2rem 0;
+
+        &--add{
+            display: flex;
+            margin-top: .75rem;
+            input{
+                background-color: inherit;
+                color: #fefefe;
+                padding: .3rem .45rem;
+                font-size: 1.25rem;
+                flex: 3.5;
+
+            }
+
+            button{
+                flex: 1;
+                border-top-left-radius: 5px;
+                padding: .2rem;
+            }
+        }
+
+        .title{
+            background-color: inherit;
+            color: #fefefe;
+            font-size: 1.25rem;
+            margin-left: .5rem;
+            width: 12rem;
+        }
+
+        .view{
+            background-color: blue;
+            width: 3rem;
+        }
+    }
+
+    .item{
+        
+        &__switch{
+            position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 24px;
+  margin-left: .5rem;
+  transform: scale(.85);
+        }
+
+        &__slider{
+            position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+  border-radius: 34px;
+
+  &::before{
+    border-radius: 50%;
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: 0.4s;
+    transition: 0.4s;
+  }
+        }
+
+        &__switch-container{
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-pack: center;
+                -ms-flex-pack: center;
+                    justify-content: center;
+            -ms-flex-pack: distribute;
+                justify-content: space-around;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
+        }
+    }
+
+    .item__slider-input:checked + .item__slider {
+        background: #a2ce43;
+      }
+      
+      .item__slider-input:checked + .item__slider::before {
+        -webkit-transform: translateX(16px);
+                transform: translateX(16px);
+      }
+
+
 }

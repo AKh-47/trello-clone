@@ -1,0 +1,53 @@
+.dashboard{
+    font-family: $font-family, sans-serif, serif;
+    display: flex;
+
+    main{
+        height: 90vh;
+        background-color: $white;
+        border-top-left-radius: 40px;
+        margin-left: auto;
+        flex: 6;
+        padding: 2rem;
+
+        header{
+
+            .search{
+                color: $black;
+
+                input{
+                    border-bottom: 1px solid $black;
+                    margin-left: .5rem;
+                    font-size: 1.25rem;
+                    color: $black;
+                    background-color: inherit;
+                    width: 10rem;
+                    transition: .2s all;
+
+                    &:focus{
+                        width: 15rem;
+
+                    }
+
+                }
+            }
+        }
+    }
+
+    aside{
+        flex: 1;
+    }
+
+}
+
+.board-tile{
+        background-color:$white-2; 
+        min-height: 2rem;
+        margin: 1rem 0;
+        border-top-left-radius: 15px;
+        color: $black-2;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+        
+}

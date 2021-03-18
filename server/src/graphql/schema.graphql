@@ -3,13 +3,6 @@ type Query {
 }
 
 type Mutation{
-   userSignUp(username:String,email:String,password:String):Response
-   userLogIn(email:String,password:String):Response
-   # createRoom(token:ID):Response
 }
 
-type Response{
-   message:String
-   success:Boolean
-}
 

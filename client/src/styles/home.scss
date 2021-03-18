@@ -1,0 +1,29 @@
+.home{
+    font-family: $font-family, sans-serif, serif;
+    display: flex;
+    align-items: center;
+min-height: 90vh;
+padding: 2rem;
+justify-content: center;
+position: relative;
+    h1{
+        font-size:10rem;
+        text-align: center;
+        font-family: 'Lobster', cursive;
+
+    }
+
+    .bg-shape{
+        position: absolute;
+
+        &.circle{
+            width: 25rem;
+            height: 25rem;
+            border: 1px solid $white;
+            border-radius: 50%;
+            opacity: .5;
+        }
+    }
+
+
+}

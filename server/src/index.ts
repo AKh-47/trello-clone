@@ -2,11 +2,14 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
+import authRoutes from "./routes/auth";
+
 import connectDB from "./config/db";
 
 import { ApolloServer, gql } from "apollo-server-express";
 
 import resolvers from "./graphql/resolvers";
+import context from "./graphql/context";
 import fs from "fs";
 import path from "path";
 
@@ -16,17 +19,14 @@ const typeDefs = gql(
   })
 );
 
-// Github Oauth
-// File Upload
-// Direct Messages
-// Audio chat
-
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, context });
 
 const app = express();
 dotenv.config();
 app.use(cors());
 connectDB();
+
+app.use("/auth", authRoutes);
 
 server.applyMiddleware({ app, path: "/graphql" });
 

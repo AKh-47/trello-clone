@@ -1,3 +1,41 @@
 .not-found{
-    
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-family, sans-serif, serif;
+    font-size: 5rem;
+    flex-flow: column;
+
+section{
+    display: flex;
+    align-items: center;
+}
+
+
+    span{
+        border-right: 1px solid rgba($color: $white, $alpha: .5);
+        padding-right: 5rem;
+        margin-right: 1rem;
+        font-size: 7rem;
+
+        font-family: 'Lobster', cursive;
+
+
+    }
+
+    button{
+        margin-top: 5rem;
+        color: $white;
+        font-size: 1.5rem;
+        padding: .5rem 1rem;
+        background: inherit;
+        border: 1px solid $white;
+        border-radius: 5px;
+
+        i{
+            margin-right: .5rem;
+        }
+    }
+
 }
