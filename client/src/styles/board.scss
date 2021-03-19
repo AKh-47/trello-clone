@@ -9,14 +9,13 @@
     header{
         height: 10vh;
         display: flex;
-        justify-content: center;
         align-items: center;
 
         input{
             background-color: inherit;
             color: $white;
-            font-size: 2.25rem;
-            text-align: center;
+            font-size: 2.25rem; 
+            margin-left: 3rem;
         }
     }
 
@@ -113,7 +112,9 @@
 
     &__item{
 display: flex;
-margin: .2rem 0;
+margin: 1rem 0;
+padding-bottom: .25rem;
+border-bottom: 1px solid #fefefe44;
 
         &--add{
             display: flex;
@@ -124,7 +125,6 @@ margin: .2rem 0;
                 padding: .3rem .45rem;
                 font-size: 1.25rem;
                 flex: 3.5;
-
             }
 
             button{
@@ -143,8 +143,12 @@ margin: .2rem 0;
         }
 
         .view{
-            background-color: blue;
             width: 3rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
         }
     }
 

@@ -23,8 +23,6 @@ export default function Board({}: Props): ReactElement {
             <List />
             <List />
             <List />
-            <List />
-            <List />
 
             <AddList handleAddList={() => {}} />
           </div>

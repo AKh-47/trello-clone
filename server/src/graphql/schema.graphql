@@ -1,8 +1,37 @@
+scalar Date
+
 type Query {
-   greeting: String!
+   board(id:String):Board
 }
 
 type Mutation{
+  addBoard(name:String):Board
+  addList(name:String):List
 }
+
+type Board {
+   name:String!
+   createdAt:Date!
+   lastEditedAt:Date
+   lists:[List!]!
+   private:Boolean!
+}
+
+type List {
+    name:String!
+   createdAt:Date!
+   lastEditedAt:Date
+   listItems:[ListItems!]!
+}
+
+type ListItems {
+   name:String!
+   description:String!
+   createdAt:Date!
+   lastEditedAt:Date
+   completed:Boolean!
+}
+
+
 
 

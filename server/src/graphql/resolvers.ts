@@ -1,6 +1,12 @@
+import { getBoardById } from "../controllers/query/board";
+import { addBoard, addList } from "../controllers/mutation/board";
+
 export default {
   Query: {
-    greeting: () => "Hello World",
+    board: getBoardById,
   },
-  Mutation: {},
+  Mutation: {
+    addBoard,
+    addList,
+  },
 };

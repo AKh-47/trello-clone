@@ -13,6 +13,8 @@ export default function List({}: Props): ReactElement {
       </div>
       <div className="list__items">
         <ListItem />
+        <ListItem />
+        <ListItem />
         <AddListItem />
       </div>
     </div>
@@ -36,7 +38,9 @@ function ListItem({}: ItemProps): ReactElement {
         </label>
       </div>{" "}
       <input type="text" className="title" />
-      <div className="view"></div>
+      <div className="view">
+        <i className="fa fa-eye"></i>
+      </div>
     </div>
   );
 }

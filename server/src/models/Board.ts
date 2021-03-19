@@ -20,10 +20,10 @@ const listItemSchema = new mongoose.Schema({
   lastEditedAt: {
     type: Date,
   },
-  lastEditedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+  // lastEditedBy: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
 });
 
 const listSchema = new mongoose.Schema({
@@ -38,14 +38,14 @@ const listSchema = new mongoose.Schema({
   lastEditedAt: {
     type: Date,
   },
-  lastEditedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
-  createdBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+  // lastEditedBy: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
+  // createdBy: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
   listItems: {
     type: [listItemSchema],
     default: [],
@@ -61,10 +61,10 @@ const boardSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+  // owner: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
   // githubLink: {
   //   type: String,
   //   required: true,
@@ -79,10 +79,10 @@ const boardSchema = new mongoose.Schema({
   lastEditedAt: {
     type: Date,
   },
-  lastEditedBy: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-  },
+  // lastEditedBy: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: "User",
+  // },
   lists: {
     type: [listSchema],
     default: [],
@@ -91,7 +91,7 @@ const boardSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  collaborators: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+  // collaborators: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });
 
 export default mongoose.model<any>("Board", boardSchema);
