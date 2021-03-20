@@ -2,10 +2,32 @@ import React, { Fragment, ReactElement } from "react";
 import Header from "../Header";
 import List from "./List";
 import AddList from "./AddList";
+import { gql, useQuery } from "@apollo/client";
 
 interface Props {}
 
 export default function Board({}: Props): ReactElement {
+  const boardID = "605448ab41860723443fc54e";
+
+  const { loading, error, data } = useQuery(gql`
+    query {
+      board(id: "605448ab41860723443fc54e") {
+        name
+        lists {
+          name
+          listItems {
+            name
+          }
+        }
+      }
+    }
+  `);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(</p>;
+
+  console.log(data);
+
   return (
     <Fragment>
       <Header>
@@ -20,11 +42,10 @@ export default function Board({}: Props): ReactElement {
         </header>
         <main>
           <div className="lists">
-            <List />
-            <List />
-            <List />
-
-            <AddList handleAddList={() => {}} />
+            {data.board.lists.map((list: any) => (
+              <List {...list} />
+            ))}
+            <AddList />
           </div>
         </main>
       </div>

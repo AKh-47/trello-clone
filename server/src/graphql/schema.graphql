@@ -1,15 +1,20 @@
 scalar Date
 
+
 type Query {
    board(id:String):Board
+   boards:[Board!]!
 }
 
 type Mutation{
-  addBoard(name:String):Board
-  addList(name:String):List
+  addBoard(name:String):Board!
+  editBoardTitle(name:String!,id:String!):Board!
+  addList(name:String!,boardID:String!):List!
 }
 
+
 type Board {
+   _id:String!
    name:String!
    createdAt:Date!
    lastEditedAt:Date
@@ -18,13 +23,15 @@ type Board {
 }
 
 type List {
-    name:String!
+   _id:String!
+   name:String!
    createdAt:Date!
    lastEditedAt:Date
    listItems:[ListItems!]!
 }
 
 type ListItems {
+   _id:String!
    name:String!
    description:String!
    createdAt:Date!

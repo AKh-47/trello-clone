@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.scss";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import ClientProvider from "./context/ClientContext";
+import ApolloClientProvider from "./context/ApolloClientContext";
 import AuthProvider from "./context/AuthContext";
 import SettingsProvider from "./context/SettingsContext";
 
@@ -12,9 +12,9 @@ ReactDOM.render(
     <BrowserRouter>
       <AuthProvider>
         <SettingsProvider>
-          <ClientProvider>
+          <ApolloClientProvider>
             <App />
-          </ClientProvider>
+          </ApolloClientProvider>
         </SettingsProvider>
       </AuthProvider>
     </BrowserRouter>

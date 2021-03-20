@@ -1,10 +1,15 @@
 import React, { ReactElement } from "react";
+import { gql, useMutation } from "@apollo/client";
 
-interface Props {
-  handleAddList: () => void;
-}
+interface Props {}
 
-export default function AddList({ handleAddList }: Props): ReactElement {
+export default function AddList({}: Props): ReactElement {
+  // const [addList, { data }] = useMutation(gql``);
+
+  const handleAddList = async (e: any) => {
+    e.preventDefault();
+  };
+
   return (
     <React.Fragment>
       <input type="checkbox" id="add-list" style={{ display: "none" }} />
