@@ -1,5 +1,5 @@
 import express from "express";
-import { registerHandler, loginHandler } from "../controllers/mutation/auth";
+import { registerHandler, loginHandler } from "../controllers/auth";
 
 const router = express.Router();
 

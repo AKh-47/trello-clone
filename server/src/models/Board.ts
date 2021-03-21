@@ -61,10 +61,11 @@ const boardSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  // owner: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: "User",
-  // },
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+    required: true,
+  },
   // githubLink: {
   //   type: String,
   //   required: true,
@@ -89,7 +90,7 @@ const boardSchema = new mongoose.Schema({
   },
   private: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   // collaborators: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
 });

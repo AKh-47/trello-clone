@@ -4,7 +4,7 @@ import Header from "./Header";
 
 interface Props {}
 
-export default function Home({}: Props): ReactElement {
+export default function Landing({}: Props): ReactElement {
   return (
     <Fragment>
       <Header>

@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import User from "../../models/User";
+import User from "../models/User";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 require("dotenv").config();
@@ -11,7 +11,7 @@ export const registerHandler = async (
 ) => {
   try {
     if (!process.env.SECRET) {
-      throw new Error("Environment Unavailable");
+      throw new Error("Environment Invalid");
     }
 
     const { name, email, password } = req.body;
@@ -66,12 +66,6 @@ export const loginHandler = async (
     if (!check) {
       return res.status(401).json({
         message: "Auth Failed",
-      });
-    }
-
-    if (!user.verified) {
-      return res.json({
-        message: "User not Verified",
       });
     }
 

@@ -1,5 +1,4 @@
 import React, { ReactElement } from "react";
-import { gql, useMutation } from "@apollo/client";
 
 interface Props {}
 

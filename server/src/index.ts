@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 
@@ -24,11 +24,19 @@ const server = new ApolloServer({ typeDefs, resolvers, context });
 const app = express();
 dotenv.config();
 app.use(cors());
+app.use(express.json());
 connectDB();
 
 app.use("/auth", authRoutes);
 
 server.applyMiddleware({ app, path: "/graphql" });
+
+app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
+  res.status(500).json({
+    error: true,
+    message: err.message,
+  });
+});
 
 app.listen(process.env.PORT, () =>
   console.log(`Server running on port ${process.env.PORT}...`)

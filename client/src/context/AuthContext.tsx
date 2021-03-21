@@ -19,7 +19,12 @@ export function useAuth() {
 }
 
 export default function AuthProvider({ children }: Props): ReactElement {
-  const [currentUser, setCurrentUser] = useState<Nullable<User>>(null);
+  const [currentUser, setCurrentUser] = useState<Nullable<User>>({
+    id: "6056ce13f682253351cc2247",
+    name: "Akhil",
+    email: "kalaakki@gmail.com",
+    iat: 1616301589,
+  });
 
   const register = async (name: string, email: string, password: string) => {};
 

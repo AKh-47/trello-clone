@@ -1,12 +1,15 @@
 import React, { ReactElement } from "react";
+import { gql, useMutation } from "@apollo/client";
 
-interface Props {}
+interface Props {
+  name: string;
+}
 
-export default function List({}: Props): ReactElement {
+export default function List({ name }: Props): ReactElement {
   return (
     <div className="list">
       <div className="list__top">
-        <input type="text" className="name" />
+        <input type="text" className="name" value={name} onChange={() => {}} />
         <div className="menu">
           <i className="fas fa-ellipsis-v"></i>
         </div>
