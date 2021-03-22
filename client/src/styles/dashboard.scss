@@ -3,6 +3,10 @@
     display: flex;
     height: 90vh;
 
+    section{
+    margin-top: 2rem;
+    }
+
 
     main{
         height: 100%;
@@ -13,18 +17,41 @@
         padding: 2rem;
 
         header{
+            display: flex;
+            justify-content: space-between;
+
+            nav{
+            font-size: 1.15rem;
+            display: flex;
+
+            i{
+                margin-left: 1rem;
+                font-size: 1.5rem;
+            }
+
+            span{
+                cursor: pointer;
+                &:first-child{
+                    margin-right: .5rem;
+                    padding-right: .5rem;
+                    border-right: 1px solid $white-2;
+                }
+            }
+
+            }
 
             .search{
-                color: $black;
+                color: $white;
 
                 input{
-                    border-bottom: 1px solid $black;
+                    border-bottom: 1px solid $white;
                     margin-left: .5rem;
                     font-size: 1.25rem;
-                    color: $black;
+                    color: $white;
                     background-color: inherit;
                     width: 10rem;
                     transition: .2s all;
+                    padding-bottom: .25rem;
 
                     &:focus{
                         width: 15rem;
@@ -80,13 +107,14 @@
 }
 
 .board-tile{
-        background-color:$white-2; 
+        background-color:$black; 
         min-height: 2rem;
         margin: 1rem 0;
-        border-top-left-radius: 15px;
-        color: $black-2;
+        color: $white;
         display: flex;
         align-items: center;
-        padding: 1rem;
+        padding: .5rem 1rem;
+        border-radius: 10px;
         
 }
+

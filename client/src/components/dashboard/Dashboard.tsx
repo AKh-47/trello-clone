@@ -1,7 +1,7 @@
 import React, { ReactElement, Fragment } from "react";
 import Header from "../Header";
 import { NavLink, Route, Switch } from "react-router-dom";
-import PrivateBoards from "./PrivateBoards";
+import Boards from "./Boards";
 import Home from "./Home";
 
 interface Props {}
@@ -23,10 +23,7 @@ export default function Dashboard({}: Props): ReactElement {
           <NavLink to="/">
             <i className="fas fa-cog"></i>Settings
           </NavLink>
-          <NavLink to="/">
-            <i className="fas fa-plus-circle"></i>Add Board
-          </NavLink>
-          <NavLink to="/private">
+          <NavLink to="/boards">
             <i className="fas fa-clipboard-list"></i>Boards
           </NavLink>
           <NavLink to="/">
@@ -44,7 +41,7 @@ export default function Dashboard({}: Props): ReactElement {
         <main>
           <Switch>
             <Route exact path="/" component={Home} />
-            <Route path="/private" component={PrivateBoards} />
+            <Route path="/boards" component={Boards} />
           </Switch>
         </main>
       </div>
